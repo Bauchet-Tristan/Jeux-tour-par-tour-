@@ -78,12 +78,12 @@ img {
 
 
 .describe {
-    border: 1px solid white;
+    border: 2px solid white;
     display: flex;
     align-items: flex-start;
     background-color: rgba(30, 30, 50, 0.8);
-    height: 60%;
-    width: 40%;
+    height: 80%;
+    width: 50%;
 }
 
 
@@ -144,7 +144,7 @@ img {
 
 .monstre3 {
 
-    
+
     transform: scaleX(-1); /*sert a retourner l'image*/
 
     display: flex;
