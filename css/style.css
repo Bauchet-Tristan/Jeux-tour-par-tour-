@@ -40,6 +40,7 @@ img {
 
 
 .stat {
+  background-color: ;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -47,6 +48,13 @@ img {
     height: 25%;
 }
 
+.top {
+    background-color: ;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 25%;
+}
 
 .Middle {
     display: flex;
@@ -94,13 +102,12 @@ img {
     background-color: rgba(30, 30, 50, 0);
     color: rgba(200, 100, 100, 0);
     font-size: 120%;
-    background-image: url(https://kemojimonstervideo.files.wordpress.com/2018/10/dinovaldo1.gif);
+    background-image: url(https://cdn.lowgif.com/small/6b16311d0408e65c-.gif);
     background-repeat: no-repeat;
     background-size: 100% 100%;
-    height: 80%;
-    width: 50%;
+    height: 100%;
+    width: 70%;
 }
-
 
 .monstre1:hover {
     border: 1px solid white;
@@ -109,6 +116,8 @@ img {
     font-size: 220%;
     font-weight: bold;
 }
+
+
 
 .monstre2 {
     display: flex;
@@ -119,10 +128,9 @@ img {
     background-image: url(https://kemojimonstervideo.files.wordpress.com/2018/10/dinovaldo1.gif);
     background-repeat: no-repeat;
     background-size: 100% 100%;
-    height: 80%;
-    width: 50%;
+    height: 70%;
+    width: 60%;
 }
-
 
 .monstre2:hover {
     border: 1px solid white;
@@ -131,6 +139,34 @@ img {
     font-size: 220%;
     font-weight: bold;
 }
+
+
+
+.monstre3 {
+
+    
+    transform: scaleX(-1); /*sert a retourner l'image*/
+
+    display: flex;
+    justify-content: space-between;
+    background-color: rgba(30, 30, 50, 0);
+    color: rgba(200, 100, 100, 0);
+    font-size: 120%;
+    background-image: url(https://i.pinimg.com/originals/e5/73/4d/e5734d3fe9fd505f19d4352c16b9f14c.gif);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    height: 80%;
+    width: 50%;
+}
+
+.monstre3:hover {
+    border: 1px solid white;
+    background-color: rgba(30, 30, 50, 0.8);
+    color: rgba(200, 100, 100, 1);
+    font-size: 220%;
+    font-weight: bold;
+}
+
 
 
 .attack {

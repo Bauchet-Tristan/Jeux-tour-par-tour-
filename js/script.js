@@ -28,6 +28,10 @@ var monstre1 = document.getElementById("m1");
 var vie_monstre2 = document.getElementById("mh2");
 var monstre2 = document.getElementById("m2");
 
+//stat monstre 3
+var vie_monstre3 = document.getElementById("mh3");
+var monstre3 = document.getElementById("m3");
+
 
 //Fonction----------------------------------------------
 
@@ -50,3 +54,6 @@ monstre1.onclick = function(){attack(vie_monstre1,attack_koh,monstre1);}
 
 //monstre 2
 monstre2.onclick = function(){attack(vie_monstre2,attack_koh,monstre2);}
+
+//monstre 3
+monstre3.onclick = function(){attack(vie_monstre3,attack_koh,monstre3);}
