@@ -20,10 +20,11 @@ function showAlert() // teste de fonction
 //Variable----------------------------------------------
 var joueur = 1;
 var fight = document.getElementById("fight");
+var i = 1;
 
 
-bouton_attack
-//stat Koh
+//stat bouton_koh
+var bouton_attack_joueur1 = document.getElementById("bouton_attack");
 var attack_joueur1 = document.getElementById("ak");
 var vie_joueur1 = document.getElementById("hk");
 
@@ -52,24 +53,27 @@ function attack(vie,attack,monstre)
   {
     monstre.style.visibility="hidden";
   }
+
 }
 
 
 function action()
 {
-  description
+  if (i == 1){
+    monstre1.onclick = function(){attack(vie_monstre1,attack_joueur1,monstre1);}
+    i=0;
+  }
 }
 
 
 
 //Code--------------------------------------------------
-fight.onclick = function(){action();}
+bouton_attack_joueur1.onclick = function(){action();}
 
 
 
 //monstre 1
-monstre1.onclick = function(){attack(vie_monstre1,attack_joueur1,monstre1);}
-monstre1.onclick
+
 //monstre 2
 monstre2.onclick = function(){attack(vie_monstre2,attack_joueur1,monstre2);}
 
