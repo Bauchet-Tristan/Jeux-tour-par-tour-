@@ -18,15 +18,19 @@ function showAlert() // teste de fonction
 
 
 //Variable----------------------------------------------
-var joueur = 1;
+var joueur = 0;
 var fight = document.getElementById("fight");
-var i = 1;
+var change = document.getElementById("change");
+var bouton_attack_joueur = document.getElementById("bouton_attack");
+
+//stat Hass joueur2
+var attack_joueur2 = document.getElementById("j2a");
+var vie_joueur2 = document.getElementById("j2h");
 
 
-//stat bouton_koh
-var bouton_attack_joueur1 = document.getElementById("bouton_attack");
-var attack_joueur1 = document.getElementById("ak");
-var vie_joueur1 = document.getElementById("hk");
+//stat Koh joueur1
+var attack_joueur1 = document.getElementById("j1a");
+var vie_joueur1 = document.getElementById("j1h");
 
 
 
@@ -45,7 +49,7 @@ var monstre3 = document.getElementById("m3");
 
 //Fonction----------------------------------------------
 
-function attack(vie,attack,monstre)
+function cible_attack(vie,attack,monstre)
 {
   vie.innerHTML = vie.innerHTML - attack.innerHTML;
 
@@ -53,29 +57,32 @@ function attack(vie,attack,monstre)
   {
     monstre.style.visibility="hidden";
   }
-
+  joueur = 1;
 }
 
 
-function action()
+function attack()
 {
-  if (i == 1){
-    monstre1.onclick = function(){attack(vie_monstre1,attack_joueur1,monstre1);}
-    i=0;
+  monstre1.onclick = function(){cible_attack(vie_monstre1,attack_joueur1,monstre1);}
+  monstre2.onclick = function(){cible_attack(vie_monstre2,attack_joueur1,monstre2);}
+  monstre3.onclick = function(){cible_attack(vie_monstre3,attack_joueur1,monstre3);}
+
+  if (joueur==1)
+  {
+    alert("boby");
+    v=0;
+    action_choix();
   }
+
 }
 
+
+function action_choix()
+{
+  bouton_attack_joueur.onclick = function(){attack();}
+}
 
 
 //Code--------------------------------------------------
-bouton_attack_joueur1.onclick = function(){action();}
 
-
-
-//monstre 1
-
-//monstre 2
-monstre2.onclick = function(){attack(vie_monstre2,attack_joueur1,monstre2);}
-
-//monstre 3
-monstre3.onclick = function(){attack(vie_monstre3,attack_joueur1,monstre3);}
+fight.onclick = function(){action_choix();}
