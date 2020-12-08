@@ -28,8 +28,37 @@
 }
 
 
-.pde {
+.action {
+    border: 2px solid white;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-around;
+    background-color: rgba(30, 30, 50, 0.8);
+    height: 80%;
+    width: 20%;
+}
+
+
+.describe {
+    border: 2px solid white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    background-color: rgba(30, 30, 50, 0.8);
+    height: 80%;
+    width: 50%;
     font-size: 220%;
+}
+
+.class_change {
+    display: flex;
+    justify-content: space-around;
+}
+
+.class_attack1{
+    display: flex;
+    justify-content: space-around;
 }
 
 
@@ -40,7 +69,7 @@ img {
 
 
 .stat {
-  background-color: ;
+    background-color: ;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -62,28 +91,6 @@ img {
     background-color: ;
     width: 100%;
     height: 50%;
-}
-
-
-.action {
-    border: 2px solid white;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    justify-content: space-around;
-    background-color: rgba(30, 30, 50, 0.8);
-    height: 80%;
-    width: 20%;
-}
-
-
-.describe {
-    border: 2px solid white;
-    display: flex;
-    align-items: flex-start;
-    background-color: rgba(30, 30, 50, 0.8);
-    height: 80%;
-    width: 50%;
 }
 
 
@@ -143,8 +150,6 @@ img {
 
 
 .monstre3 {
-
-
     transform: scaleX(-1); /*sert a retourner l'image*/
 
     display: flex;

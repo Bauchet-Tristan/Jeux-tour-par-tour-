@@ -22,6 +22,7 @@ var joueur = 1;
 var fight = document.getElementById("fight");
 
 
+bouton_attack
 //stat Koh
 var attack_joueur1 = document.getElementById("ak");
 var vie_joueur1 = document.getElementById("hk");
