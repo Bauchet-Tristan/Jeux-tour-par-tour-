@@ -18,19 +18,27 @@ function showAlert() // teste de fonction
 
 
 //Variable----------------------------------------------
-var joueur = 0;
+var joueur = 1;
+
 var fight = document.getElementById("fight");
-var change = document.getElementById("change");
+var magic = document.getElementById("magic");
+
 var bouton_attack_joueur = document.getElementById("bouton_attack");
+var bouton_poison_joueur = document.getElementById("bouton_poison");
+
+
+
+
+//stat Koh joueur1
+var attack_joueur1 = document.getElementById("j1a");
+var vie_joueur1 = document.getElementById("j1h");
+
 
 //stat Hass joueur2
 var attack_joueur2 = document.getElementById("j2a");
 var vie_joueur2 = document.getElementById("j2h");
 
 
-//stat Koh joueur1
-var attack_joueur1 = document.getElementById("j1a");
-var vie_joueur1 = document.getElementById("j1h");
 
 
 
@@ -49,6 +57,33 @@ var monstre3 = document.getElementById("m3");
 
 //Fonction----------------------------------------------
 
+
+
+function action_fight()
+{
+  bouton_attack_joueur.onclick = function(){attack();}
+}
+
+
+function attack()
+{
+    if (joueur==1)
+    {
+      monstre1.onclick = function(){cible_attack(vie_monstre1,attack_joueur1,monstre1);}
+      monstre2.onclick = function(){cible_attack(vie_monstre2,attack_joueur1,monstre2);}
+      monstre3.onclick = function(){cible_attack(vie_monstre3,attack_joueur1,monstre3);}
+    }
+
+    if (joueur==2) {
+      monstre1.onclick = function(){cible_attack(vie_monstre1,attack_joueur2,monstre1);}
+      monstre2.onclick = function(){cible_attack(vie_monstre2,attack_joueur2,monstre2);}
+      monstre3.onclick = function(){cible_attack(vie_monstre3,attack_joueur2,monstre3);}
+    }
+
+  bouton_attack_joueur.onclick = false;
+}
+
+
 function cible_attack(vie,attack,monstre)
 {
   vie.innerHTML = vie.innerHTML - attack.innerHTML;
@@ -57,32 +92,48 @@ function cible_attack(vie,attack,monstre)
   {
     monstre.style.visibility="hidden";
   }
-  joueur = 1;
+
+  monstre1.onclick = false ;
+  monstre2.onclick = false ;
+  monstre3.onclick = false ;
 }
 
 
-function attack()
-{
-  monstre1.onclick = function(){cible_attack(vie_monstre1,attack_joueur1,monstre1);}
-  monstre2.onclick = function(){cible_attack(vie_monstre2,attack_joueur1,monstre2);}
-  monstre3.onclick = function(){cible_attack(vie_monstre3,attack_joueur1,monstre3);}
 
-  if (joueur==1)
+function action_magic()
+{
+  bouton_poison_joueur.onclick = function(){poison();}
+}
+
+
+
+function poison()
+{
+    monstre1.onclick = function(){cible_poison(vie_monstre1,monstre1);}
+    monstre2.onclick = function(){cible_poison(vie_monstre2,monstre2);}
+    monstre3.onclick = function(){cible_poison(vie_monstre3,monstre3);}
+
+bouton_poison_joueur.onclick = false;
+}
+
+
+function cible_poison(vie,monstre)
+{
+  vie.innerHTML = vie.innerHTML - 50;
+
+  if (vie.innerHTML <= 0)
   {
-    alert("boby");
-    v=0;
-    action_choix();
+    monstre.style.visibility="hidden";
   }
 
-}
-
-
-function action_choix()
-{
-  bouton_attack_joueur.onclick = function(){attack();}
+  monstre1.onclick = false ;
+  monstre2.onclick = false ;
+  monstre3.onclick = false ;
 }
 
 
 //Code--------------------------------------------------
 
-fight.onclick = function(){action_choix();}
+fight.onclick = function(){action_fight();}
+
+magic.onclick = function(){action_magic();}
