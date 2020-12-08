@@ -1,0 +1,174 @@
+.p1 {
+    font-size: 225%;
+    text-decoration: underline;
+}
+
+
+.ph {
+    font-size: 220%;
+    color: green;
+}
+
+
+.pm {
+    font-size: 220%;
+    color: DodgerBlue;
+}
+
+
+.pa {
+    font-size: 220%;
+    color: red;
+}
+
+
+.option {
+    font-size: 225%;
+    font-weight: bold;
+}
+
+
+.pde {
+    font-size: 220%;
+}
+
+
+img {
+    width: 50%;
+    height: 100%;
+}
+
+
+.stat {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: 25%;
+}
+
+
+.Middle {
+    display: flex;
+    justify-content: space-between;
+    background-color: ;
+    width: 100%;
+    height: 50%;
+}
+
+
+.action {
+    border: 2px solid white;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-around;
+    background-color: rgba(30, 30, 50, 0.8);
+    height: 80%;
+    width: 20%;
+}
+
+
+.describe {
+    border: 1px solid white;
+    display: flex;
+    align-items: flex-start;
+    background-color: rgba(30, 30, 50, 0.8);
+    height: 60%;
+    width: 40%;
+}
+
+
+.space {
+    display: flex;
+    justify-content: space-between;
+    background-color: ;
+    height: 60%;
+    width: 30%;
+}
+
+
+.monstre1 {
+    display: flex;
+    justify-content: space-between;
+    background-color: rgba(30, 30, 50, 0);
+    color: rgba(200, 100, 100, 0);
+    font-size: 120%;
+    background-image: url(https://kemojimonstervideo.files.wordpress.com/2018/10/dinovaldo1.gif);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    height: 80%;
+    width: 50%;
+}
+
+
+.monstre1:hover {
+    border: 1px solid white;
+    background-color: rgba(30, 30, 50, 0.8);
+    color: rgba(200, 100, 100, 1);
+    font-size: 220%;
+    font-weight: bold;
+}
+
+
+.attack {
+    border: 1px solid red;
+    display: flex;
+    justify-content: space-around;
+    background-color: rgba(30, 30, 50, 0.8);
+    height: 100%;
+    width: 50%;
+}
+
+
+.Mana {
+    border: 1px solid DodgerBlue;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    background-color: rgba(30, 30, 50, 0.8);
+    height: 100%;
+    width: 50%;
+}
+
+
+.health {
+    border: 1px solid green;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    background-color: rgba(30, 30, 50, 0.8);
+    height: 100%;
+    width: 50%;
+}
+
+
+.name {
+    border: 1px solid white;
+    display: flex;
+    justify-content: space-around;
+    background-color: rgba(30, 30, 50, 0.8);
+    height: 100%;
+    width: 50%;
+}
+
+
+.titre {
+    border: 1px solid darkblue;
+    display: flex;
+    justify-content: space-around;
+    background-color: rgba(30, 30, 50, 0.8);
+    height: 4%;
+    width: 20%;
+}
+
+
+
+
+body {
+    background-image: url(https://www.unesourisetmoi.info/data/medias/photos/082/pixel-art_fonds-animes_jeux-de-combat_HD_02.gif);
+    #background-image: url(Fond.gif);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    color: white;
+}
