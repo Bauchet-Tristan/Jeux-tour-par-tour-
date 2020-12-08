@@ -17,34 +17,36 @@ function showAlert() // teste de fonction
 
 
 
-
-
 //Variable----------------------------------------------
 var attack_koh = document.getElementById("ak");
 
-var vie_monstre = document.getElementById("mh");
-
+//stat monstre1
+var vie_monstre1 = document.getElementById("mh1");
 var monstre1 = document.getElementById("m1");
+
+//stat monstre 2
+var vie_monstre2 = document.getElementById("mh2");
+var monstre2 = document.getElementById("m2");
 
 
 //Fonction----------------------------------------------
 
-function attack()
+function attack(vie,attack,monstre)
 {
-  attack_koh = document.getElementById("ak");
+  vie.innerHTML = vie.innerHTML - attack.innerHTML;
 
-  vie_monstre = document.getElementById("mh");
-
-  vie_monstre.innerHTML = vie_monstre.innerHTML - attack_koh.innerHTML;
-
-
-  if (vie_monstre.innerHTML <= 0)
-{
-  monstre1.style.visibility="hidden";
+  if (vie.innerHTML <= 0)
+  {
+    monstre.style.visibility="hidden";
+  }
 }
 
-}
+
 
 //Code--------------------------------------------------
 
-monstre1.onclick = attack;
+//monstre 1
+monstre1.onclick = function(){attack(vie_monstre1,attack_koh,monstre1);}
+
+//monstre 2
+monstre2.onclick = function(){attack(vie_monstre2,attack_koh,monstre2);}

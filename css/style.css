@@ -110,6 +110,28 @@ img {
     font-weight: bold;
 }
 
+.monstre2 {
+    display: flex;
+    justify-content: space-between;
+    background-color: rgba(30, 30, 50, 0);
+    color: rgba(200, 100, 100, 0);
+    font-size: 120%;
+    background-image: url(https://kemojimonstervideo.files.wordpress.com/2018/10/dinovaldo1.gif);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    height: 80%;
+    width: 50%;
+}
+
+
+.monstre2:hover {
+    border: 1px solid white;
+    background-color: rgba(30, 30, 50, 0.8);
+    color: rgba(200, 100, 100, 1);
+    font-size: 220%;
+    font-weight: bold;
+}
+
 
 .attack {
     border: 1px solid red;
