@@ -41,7 +41,6 @@ var vie_joueur2 = document.getElementById("j2h");
 
 
 
-
 //stat monstre1
 var vie_monstre1 = document.getElementById("mh1");
 var monstre1 = document.getElementById("m1");
@@ -55,8 +54,8 @@ var vie_monstre3 = document.getElementById("mh3");
 var monstre3 = document.getElementById("m3");
 
 
-//Fonction----------------------------------------------
 
+//Fonction----------------------------------------------
 
 
 function action_fight()
@@ -74,7 +73,8 @@ function attack()
       monstre3.onclick = function(){cible_attack(vie_monstre3,attack_joueur1,monstre3);}
     }
 
-    if (joueur==2) {
+    if (joueur==2)
+    {
       monstre1.onclick = function(){cible_attack(vie_monstre1,attack_joueur2,monstre1);}
       monstre2.onclick = function(){cible_attack(vie_monstre2,attack_joueur2,monstre2);}
       monstre3.onclick = function(){cible_attack(vie_monstre3,attack_joueur2,monstre3);}
@@ -100,11 +100,15 @@ function cible_attack(vie,attack,monstre)
 
 
 
+
+
+
+
+
 function action_magic()
 {
   bouton_poison_joueur.onclick = function(){poison();}
 }
-
 
 
 function poison()
@@ -113,7 +117,7 @@ function poison()
     monstre2.onclick = function(){cible_poison(vie_monstre2,monstre2);}
     monstre3.onclick = function(){cible_poison(vie_monstre3,monstre3);}
 
-bouton_poison_joueur.onclick = false;
+    bouton_poison_joueur.onclick = false;
 }
 
 
