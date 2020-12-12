@@ -1,25 +1,7 @@
-// Write JavaScript here
-
-// variable
-
-
-/*var teste = document.getElementById("teste"); // variable de teste en direct
-teste.innerHTML = 1; // variable de teste en direct
-
-teste.onclick = showAlert ; // onclick teste
-
-function showAlert() // teste de fonction
-{
-  teste.innerHTML = 2;
-}
-  if(vie.innerHTML > attack_koh.innerHTML)
-    vie.innerHTML = "boby";*/
-
-
-
 //Variable----------------------------------------------
 var joueur = 1;
 var random = 1;
+var perdu = 0;
 
 var fight = document.getElementById("fight");
 var magic = document.getElementById("magic");
@@ -31,21 +13,37 @@ var bouton_poison_joueur = document.getElementById("bouton_poison");
 
 
 //stat Koh joueur1
-var attack_joueur1 = document.getElementById("j1a");
+var last_move_joueur1 = "rien";
 var vie_joueur1 = document.getElementById("j1h");
-
+var mana_joueur1 = document.getElementById("j1m");
+var attack_joueur1 = document.getElementById("j1a");
+var defense_joueur1 = document.getElementById("j1d");
 
 //stat Hass joueur2
-var attack_joueur2 = document.getElementById("j2a");
+var last_move_joueur2 = "rien";
 var vie_joueur2 = document.getElementById("j2h");
+var mana_joueur2 = document.getElementById("j2m");
+var attack_joueur2 = document.getElementById("j2a");
+var defense_joueur2 = document.getElementById("j2d");
 
-//stat Hass joueur2
-var attack_joueur3 = document.getElementById("j3a");
+//stat Hass joueur3
+var last_move_joueur3 = "rien";
 var vie_joueur3 = document.getElementById("j3h");
+var mana_joueur3 = document.getElementById("j3m");
+var attack_joueur3 = document.getElementById("j3a");
+var defense_joueur3 = document.getElementById("j3d");
 
-//stat Hass joueur2
-var attack_joueur4 = document.getElementById("j4a");
+
+
+
+//stat Hass joueur4
+var last_move_joueur4 = "rien";
 var vie_joueur4 = document.getElementById("j4h");
+var mana_joueur4 = document.getElementById("j4m");
+var attack_joueur4 = document.getElementById("j4a");
+var defense_joueur4 = document.getElementById("j4d");
+
+
 
 
 
@@ -73,13 +71,47 @@ var monstre3 = document.getElementById("m3");
 //Fonction----------------------------------------------
 function switch_perso ()
 {
+  if (vie_monstre1.innerHTML <= 0 && vie_monstre2.innerHTML <= 0 && vie_monstre3.innerHTML <= 0)
+  {
+    alert("vous avez gagnez pour recommencer recharger la page");
+    joueur =6;
+  }
+
+  if(perdu == 1)
+  {
+    alert("vous avez perdu pour recommencer recharger la page");
+    joueur =6;
+  }
+
   joueur = joueur + 1;
+
+  if (vie_joueur1.innerHTML == 0 && joueur == 1)
+  {
+    joueur = joueur + 1;
+  }
+
+  if (vie_joueur2.innerHTML == 0 && joueur == 2)
+  {
+    joueur = joueur + 1;
+  }
+
+  if (vie_joueur3.innerHTML == 0 && joueur == 3)
+  {
+    joueur = joueur + 1;
+  }
+
+  if (vie_joueur4.innerHTML == 0 && joueur == 4)
+  {
+    joueur = joueur + 1;
+  }
 
   if (joueur == 5)
   {
-    joueur = 1 ;
+    joueur = 0;
     monsters_attack();
   }
+
+
 }
 
 
@@ -94,8 +126,10 @@ function action_fight()
 
 function attack()
 {
-    if (joueur==1)
+
+    if (joueur==1 && last_move_joueur1 != "attack")
     {
+      last_move_joueur1 = "attack"
       monstre1.onclick = function(){cible_attack(vie_monstre1,attack_joueur1,monstre1);}
       monstre2.onclick = function(){cible_attack(vie_monstre2,attack_joueur1,monstre2);}
       monstre3.onclick = function(){cible_attack(vie_monstre3,attack_joueur1,monstre3);}
@@ -103,6 +137,7 @@ function attack()
 
     if (joueur==2)
     {
+      last_move_joueur2 = "attack"
       monstre1.onclick = function(){cible_attack(vie_monstre1,attack_joueur2,monstre1);}
       monstre2.onclick = function(){cible_attack(vie_monstre2,attack_joueur2,monstre2);}
       monstre3.onclick = function(){cible_attack(vie_monstre3,attack_joueur2,monstre3);}
@@ -110,6 +145,7 @@ function attack()
 
     if (joueur==3)
     {
+      last_move_joueur2 = "attack"
       monstre1.onclick = function(){cible_attack(vie_monstre1,attack_joueur3,monstre1);}
       monstre2.onclick = function(){cible_attack(vie_monstre2,attack_joueur3,monstre2);}
       monstre3.onclick = function(){cible_attack(vie_monstre3,attack_joueur3,monstre3);}
@@ -117,6 +153,7 @@ function attack()
 
     if (joueur==4)
     {
+      last_move_joueur4 = "attack"
       monstre1.onclick = function(){cible_attack(vie_monstre1,attack_joueur4,monstre1);}
       monstre2.onclick = function(){cible_attack(vie_monstre2,attack_joueur4,monstre2);}
       monstre3.onclick = function(){cible_attack(vie_monstre3,attack_joueur4,monstre3);}
@@ -157,11 +194,14 @@ function action_magic()
 
 function poison()
 {
-    monstre1.onclick = function(){cible_poison(vie_monstre1,monstre1);}
-    monstre2.onclick = function(){cible_poison(vie_monstre2,monstre2);}
-    monstre3.onclick = function(){cible_poison(vie_monstre3,monstre3);}
+    if (joueur==1 || joueur==2 || joueur==3 || joueur==4)
+    {
+      monstre1.onclick = function(){cible_poison(vie_monstre1,monstre1);}
+      monstre2.onclick = function(){cible_poison(vie_monstre2,monstre2);}
+      monstre3.onclick = function(){cible_poison(vie_monstre3,monstre3);}
 
-    bouton_poison_joueur.onclick = false;
+      bouton_poison_joueur.onclick = false;
+    }
 }
 
 
@@ -216,13 +256,11 @@ function monsters_attack ()
 
   valid_attack_monstre1 = 0;
 
-
   valid_attack_monstre2 = 0;
-
 
   valid_attack_monstre3 = 0;
 
-
+  switch_perso();
 }
 
 
@@ -231,30 +269,36 @@ function cible_monsters_attack (attack_monstre,valid_attack_monstre)
 {
   if(random == 1 && vie_joueur1.innerHTML > 0)
   {
-    vie_joueur1.innerHTML = vie_joueur1.innerHTML - attack_monstre.innerHTML;
+    vie_joueur1.innerHTML = vie_joueur1.innerHTML - (attack_monstre.innerHTML - defense_joueur1.innerHTML);
     valid_attack_monstre = 1;
   }
 
-
   if(random == 2 && vie_joueur2.innerHTML > 0)
   {
-    vie_joueur2.innerHTML = vie_joueur2.innerHTML - attack_monstre.innerHTML;
+    vie_joueur2.innerHTML = vie_joueur2.innerHTML - (attack_monstre.innerHTML - defense_joueur2.innerHTML);
     valid_attack_monstre = 1;
   }
 
   if(random == 3 && vie_joueur3.innerHTML > 0)
   {
-    vie_joueur3.innerHTML = vie_joueur3.innerHTML - attack_monstre.innerHTML;
+    vie_joueur3.innerHTML = vie_joueur3.innerHTML - (attack_monstre.innerHTML - defense_joueur3.innerHTML);
     valid_attack_monstre = 1;
   }
 
   if(random == 4 && vie_joueur4.innerHTML > 0)
   {
-    vie_joueur4.innerHTML = vie_joueur4.innerHTML - attack_monstre.innerHTML;
+    vie_joueur4.innerHTML = vie_joueur4.innerHTML - (attack_monstre.innerHTML - defense_joueur4.innerHTML);
     valid_attack_monstre = 1;
   }
 
   mort_perso();
+
+  if (vie_joueur4.innerHTML == 0 && vie_joueur3.innerHTML == 0 && vie_joueur2.innerHTML == 0 && vie_joueur1.innerHTML == 0)
+  {
+    valid_attack_monstre = 1;
+    perdu = 1;
+  }
+
   return valid_attack_monstre;
 
 }
