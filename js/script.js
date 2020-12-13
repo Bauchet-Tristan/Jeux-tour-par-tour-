@@ -281,6 +281,7 @@ function attack()
     monstre3.onclick = function(){right_attack4(vie_monstre3,attack_joueur4,monstre3);}
   }
 
+  bouton_defense.style.color = "white";
   bouton_attack.onclick = false;
   bouton_defense.onclick = false;
 }
@@ -667,8 +668,15 @@ function cible_monsters_attack (attack_monstre,valid_attack_monstre)
       alert("attack Koh")
       vie_joueur1_no_int.innerHTML = vie_joueur1_no_int.innerHTML - (attack_monstre.innerHTML - defense_joueur1.innerHTML);
     }
+
+    if(last_move_joueur1 == "defense")
+    {
+      alert("attack Koh but he parry");
+    }
+
     valid_attack_monstre = 1;
   }
+
 
   if(random == 2 && vie_joueur2_no_int.innerHTML > 0)
   {
@@ -677,8 +685,15 @@ function cible_monsters_attack (attack_monstre,valid_attack_monstre)
       alert("attack Hass");
       vie_joueur2_no_int.innerHTML = vie_joueur2_no_int.innerHTML - (attack_monstre.innerHTML - defense_joueur2.innerHTML);
     }
+
+    if(last_move_joueur2 == "defense")
+    {
+      alert("attack Hass but he parry");
+    }
+
     valid_attack_monstre = 1;
   }
+
 
   if(random == 3 && vie_joueur3_no_int.innerHTML > 0)
   {
@@ -687,8 +702,15 @@ function cible_monsters_attack (attack_monstre,valid_attack_monstre)
       alert("attack Muri");
       vie_joueur3_no_int.innerHTML = vie_joueur3_no_int.innerHTML - (attack_monstre.innerHTML - defense_joueur3.innerHTML);
     }
+
+    if(last_move_joueur3 == "defense")
+    {
+      alert("attack Muri but he parry");
+    }
+
     valid_attack_monstre = 1;
   }
+
 
   if(random == 4 && vie_joueur4_no_int.innerHTML > 0)
   {
@@ -697,6 +719,12 @@ function cible_monsters_attack (attack_monstre,valid_attack_monstre)
       alert("attack Cham");
       vie_joueur4_no_int.innerHTML = vie_joueur4_no_int.innerHTML - (attack_monstre.innerHTML - defense_joueur4.innerHTML);
     }
+
+    if(last_move_joueur4 == "defense")
+    {
+      alert("attack cham but he parry");
+    }
+
     valid_attack_monstre = 1;
   }
 
@@ -746,6 +774,7 @@ function mort_perso ()
 }
 
 //Code--------------------------------------------------
+
 color_perso();
 help.innerHTML = "Your actual character is in yellow. <br> Choose a action between Fight and Magic.";
 
