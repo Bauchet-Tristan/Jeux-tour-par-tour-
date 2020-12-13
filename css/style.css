@@ -45,7 +45,7 @@
 }
 
 
-.describe {
+.action2 {
     border: 2px solid white;
     display: flex;
     flex-direction: column;
@@ -59,9 +59,11 @@
 .class_magic {
     display: flex;
     justify-content: space-around;
+    font-size: 150% ;
+
 }
 
-.class_attack1{
+.class_action2{
     display: flex;
     justify-content: space-around;
 }
@@ -96,6 +98,22 @@ img {
     background-color: ;
     width: 100%;
     height: 50%;
+}
+
+
+.Help {
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid white;
+    background-color: rgba(30, 30, 50, 0.8);
+    font-size: 300%;
+    font-weight: bold;
+    width: 100%;
+    height: 14%;
+}
+
+#help {
+    font-size: 80%;
 }
 
 
@@ -155,7 +173,6 @@ img {
 
 
 .monstre3 {
-    transform: scaleX(-1); /*sert a retourner l'image*/
     display: flex;
     justify-content: space-between;
     background-color: rgba(30, 30, 50, 0);
