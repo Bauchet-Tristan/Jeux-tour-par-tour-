@@ -16,7 +16,7 @@ var bouton_defense = document.getElementById("bouton_defense");
 
 
 
-// variable pour la capacité soin
+// variable pour la capacité heal
 var cible = parseInt(0);
 var cible12 = parseInt(0);
 var cible34 = parseInt(0);
@@ -195,6 +195,7 @@ function color_perso()
 
 function action_fight()
 {
+  name_joueur4.onclick = false;
   monstre1.onclick = false ;
   monstre2.onclick = false ;
   monstre3.onclick = false ;
@@ -253,38 +254,59 @@ function attack()
 
   if (joueur==1 && last_move_joueur1 != "attack")
   {
-    last_move_joueur1 = "attack";
-    monstre1.onclick = function(){cible_attack(vie_monstre1,attack_joueur1,monstre1);}
-    monstre2.onclick = function(){cible_attack(vie_monstre2,attack_joueur1,monstre2);}
-    monstre3.onclick = function(){cible_attack(vie_monstre3,attack_joueur1,monstre3);}
+    monstre1.onclick = function(){right_attack1(vie_monstre1,attack_joueur1,monstre1);}
+    monstre2.onclick = function(){right_attack1(vie_monstre2,attack_joueur1,monstre2);}
+    monstre3.onclick = function(){right_attack1(vie_monstre3,attack_joueur1,monstre3);}
   }
 
   if (joueur==2 && last_move_joueur2 != "attack")
   {
-    last_move_joueur2 = "attack";
-    monstre1.onclick = function(){cible_attack(vie_monstre1,attack_joueur2,monstre1);}
-    monstre2.onclick = function(){cible_attack(vie_monstre2,attack_joueur2,monstre2);}
-    monstre3.onclick = function(){cible_attack(vie_monstre3,attack_joueur2,monstre3);}
+    monstre1.onclick = function(){right_attack2(vie_monstre1,attack_joueur2,monstre1);}
+    monstre2.onclick = function(){right_attack2(vie_monstre2,attack_joueur2,monstre2);}
+    monstre3.onclick = function(){right_attack2(vie_monstre3,attack_joueur2,monstre3);}
   }
 
   if (joueur==3 && last_move_joueur3 != "attack")
   {
-    last_move_joueur3 = "attack";
-    monstre1.onclick = function(){cible_attack(vie_monstre1,attack_joueur3,monstre1);}
-    monstre2.onclick = function(){cible_attack(vie_monstre2,attack_joueur3,monstre2);}
-    monstre3.onclick = function(){cible_attack(vie_monstre3,attack_joueur3,monstre3);}
+    monstre1.onclick = function(){right_attack3(vie_monstre1,attack_joueur3,monstre1);}
+    monstre2.onclick = function(){right_attack3(vie_monstre2,attack_joueur3,monstre2);}
+    monstre3.onclick = function(){right_attack3(vie_monstre3,attack_joueur3,monstre3);}
   }
 
   if (joueur==4 && last_move_joueur4 != "attack")
   {
-    last_move_joueur4 = "attack";
-    monstre1.onclick = function(){cible_attack(vie_monstre1,attack_joueur4,monstre1);}
-    monstre2.onclick = function(){cible_attack(vie_monstre2,attack_joueur4,monstre2);}
-    monstre3.onclick = function(){cible_attack(vie_monstre3,attack_joueur4,monstre3);}
+    monstre1.onclick = function(){right_attack4(vie_monstre1,attack_joueur4,monstre1);}
+    monstre2.onclick = function(){right_attack4(vie_monstre2,attack_joueur4,monstre2);}
+    monstre3.onclick = function(){right_attack4(vie_monstre3,attack_joueur4,monstre3);}
   }
 
   bouton_attack.onclick = false;
   bouton_defense.onclick = false;
+}
+
+
+function right_attack1(vie,attack,monstre)
+{
+  last_move_joueur1 = "attack";
+  cible_attack(vie,attack,monstre);
+}
+
+function right_attack2(vie,attack,monstre)
+{
+  last_move_joueur2 = "attack";
+  cible_attack(vie,attack,monstre);
+}
+
+function right_attack3(vie,attack,monstre)
+{
+  last_move_joueur3 = "attack";
+  cible_attack(vie,attack,monstre);
+}
+
+function right_attack4(vie,attack,monstre)
+{
+  last_move_joueur4 = "attack";
+  cible_attack(vie,attack,monstre);
 }
 
 
@@ -314,6 +336,7 @@ function cible_attack(vie,attack,monstre)
 
 function action_magic()
 {
+  name_joueur4.onclick = false ;
   monstre1.onclick = false ;
   monstre2.onclick = false ;
   monstre3.onclick = false ;
@@ -322,48 +345,26 @@ function action_magic()
   bouton_magic.style.color = "white";
   bouton_attack.style.color = "white";
   bouton_defense.style.color = "white";
-  help.innerHTML = "All your characters got a different magic spell. <br> If you have enough mana you can click on ??? to see the magic spell decription.";
+  help.innerHTML = "All your characters got a different magic spell. <br> If you have enough mana :<br> You can click on ??? to see the magic spell decription.";
 
-  if(joueur == 1 && last_move_joueur1 != "magic" )
+  if(joueur == 1 && last_move_joueur1 != "magic" && mana_joueur1.innerHTML >= 100)
   {
-    last_move_joueur1 = "magic";
-
-    if (mana_joueur1.innerHTML >= 100)
-    {
-      bouton_magic.onclick = function(){kirin();}
-    }
+    bouton_magic.onclick = function(){kirin();}
   }
 
-  if(joueur == 2 && last_move_joueur2 != "magic" )
+  if(joueur == 2 && last_move_joueur2 != "magic" && mana_joueur2.innerHTML >= 50)
   {
-    last_move_joueur2 = "magic";
-
-    if (mana_joueur2.innerHTML >= 50)
-    {
-      bouton_magic.onclick = function(){raion();}
-    }
+    bouton_magic.onclick = function(){raion();}
   }
 
-  if(joueur == 3 && last_move_joueur3 != "magic" )
+  if(joueur == 3 && last_move_joueur3 != "magic" && mana_joueur3.innerHTML >=50)
   {
-    last_move_joueur3 = "magic";
-
-    if (mana_joueur3.innerHTML >= 50)
-    {
-      bouton_magic.innerHTML = "Poison = 50 mana";
-      bouton_magic.onclick = function(){poison();}
-    }
+    bouton_magic.onclick = function(){poison();}
   }
 
-  if(joueur == 4 && last_move_joueur4 != "magic")
+  if(joueur == 4 && last_move_joueur4 != "magic" && mana_joueur4.innerHTML >= 50)
   {
-    last_move_joueur4 = "magic";
-
-    if (mana_joueur4.innerHTML >= 50)
-    {
-      bouton_magic.innerHTML = "Soin = 50 mana";
-      bouton_magic.onclick = function(){soin();}
-    }
+    bouton_magic.onclick = function(){read_heal();}
   }
 
   magic.onclick = false;
@@ -371,9 +372,13 @@ function action_magic()
 }
 
 
+
+
+
+
 function kirin()
 {
-  help.innerHTML = "You need 100 mana to activate this magic spell. <br> Kirin = You deal 100 damage.";
+  help.innerHTML = "You need 100 mana to activate this magic spell. <br> Kirin = You deal 100 damage. <br> Click on a monster to activate";
   bouton_magic.innerHTML = "Kirin";
   bouton_magic.style.color = "aqua";
 
@@ -388,6 +393,7 @@ function kirin()
 
 function cible_kirin(vie,monstre)
 {
+  last_move_joueur1 = "magic";
   //mana cost
   mana_joueur1.innerHTML = mana_joueur1.innerHTML - 100;
 
@@ -409,7 +415,7 @@ function cible_kirin(vie,monstre)
 
 function raion()
 {
-  help.innerHTML = "You need 50 mana to activate this magic spell. <br> Raeon = every monster take 25 damage.";
+  help.innerHTML = "You need 50 mana to activate this magic spell. <br> Raeon = every monster take 25 damage. <br> Click on a monster to activate";
   bouton_magic.style.color = "orange";
   bouton_magic.innerHTML = "Raion";
 
@@ -424,6 +430,7 @@ function raion()
 
 function cible_raion()
 {
+  last_move_joueur2 = "magic";
   //cout en mana
   mana_joueur2.innerHTML = mana_joueur2.innerHTML - 50;
 
@@ -455,12 +462,14 @@ function cible_raion()
 
 function poison()
 {
+  help.innerHTML = "You need 50 mana to activate this magic spell. <br> Poison = You deal 60 damage. <br> Click on a monster to activate";
+  bouton_magic.innerHTML = "Poison";
+  bouton_magic.style.color = "purple";
 
   monstre1.onclick = function(){cible_poison(vie_monstre1,monstre1);}
   monstre2.onclick = function(){cible_poison(vie_monstre2,monstre2);}
   monstre3.onclick = function(){cible_poison(vie_monstre3,monstre3);}
 
-  bouton_magic.onclick = false;
   magic.onclick = false;
   magic.onclick = function(){action_magic();}
 
@@ -469,8 +478,11 @@ function poison()
 
 function cible_poison(vie,monstre)
 {
+  last_move_joueur3 = "magic";
+
   mana_joueur3.innerHTML = mana_joueur3.innerHTML - 50;
-  vie.innerHTML = vie.innerHTML - 50;
+
+  vie.innerHTML = vie.innerHTML - 60;
 
   if (vie.innerHTML <= 0)
   {
@@ -485,19 +497,33 @@ function cible_poison(vie,monstre)
 }
 
 
-function soin()
+function read_heal ()
 {
+  help.innerHTML = "You need 50 mana to activate this magic spell. <br> Heal =You heal the lowest life of your characters. <br> Click on the name Cham to activate";
+  bouton_magic.innerHTML = "Heal";
+  bouton_magic.style.color = "green";
+
+  name_joueur4.onclick = function(){heal();}
+
+  magic.onclick = false;
+  magic.onclick = function(){action_magic();}
+}
+
+
+function heal()
+{
+  last_move_joueur4 = "magic";
   //Mana cost
   mana_joueur4.innerHTML = mana_joueur4.innerHTML - 50;
 
   //Trouve le pus petit
-  cible = cible_soin();
-  alert(cible);
+  cible = cible_heal();
+  //alert(cible);
 
-  //Effet Soin
+  //Effet heal
   if (cible == parseInt(1))
   {
-
+    alert("Cham heal 1");
     vie_joueur1 = vie_joueur1 - (-50);
 
     if (vie_joueur1 > vie_joueur1_max)
@@ -509,7 +535,7 @@ function soin()
 
   if (cible == parseInt(2))
   {
-
+    alert("Cham heal 2");
     vie_joueur2 = vie_joueur2 - (-50);
 
     if (vie_joueur2 > vie_joueur2_max)
@@ -520,7 +546,7 @@ function soin()
 
   if (cible == parseInt(3))
   {
-
+    alert("Cham heal 3");
     vie_joueur3 = vie_joueur3 - (-50);
 
     if (vie_joueur3 > vie_joueur3_max)
@@ -531,7 +557,7 @@ function soin()
 
   if (cible == parseInt(4))
   {
-
+    alert("Cham heal 4");
     vie_joueur4 = vie_joueur4 - (-50);
 
     if (vie_joueur4 > vie_joueur4_max)
@@ -547,7 +573,7 @@ function soin()
 }
 
 
-function cible_soin()
+function cible_heal()
 {
 
   if(vie_joueur1 <= vie_joueur2)
@@ -582,7 +608,6 @@ function cible_soin()
   {
     return cible34;
   }
-
 }
 
 
