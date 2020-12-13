@@ -196,6 +196,7 @@ function color_perso()
 
 function action_fight()
 {
+  bouton_magic.onclick = false;
   name_joueur4.onclick = false;
   monstre1.onclick = false ;
   monstre2.onclick = false ;
@@ -240,7 +241,7 @@ function defense()
   {
     last_move_joueur4 = "defense";
   }
-
+  bouton_magic.onclick = false;
   bouton_defense.onclick = false;
   bouton_attack.onclick = false;
   switch_perso();
@@ -251,6 +252,7 @@ function defense()
 
 function attack()
 {
+  bouton_magic.onclick = false;
   help.innerHTML = "Choose the monster you wanna attack by clicking on it.";
 
   if (joueur==1 && last_move_joueur1 != "attack")
@@ -338,6 +340,8 @@ function cible_attack(vie,attack,monstre)
 
 function action_magic()
 {
+  bouton_defense.onclick = false;
+  bouton_attack.onclick = false;
   name_joueur4.onclick = false ;
   monstre1.onclick = false ;
   monstre2.onclick = false ;
