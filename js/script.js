@@ -3,11 +3,13 @@ var joueur = 1;
 var random = 1;
 var perdu = 0;
 
+
 var fight = document.getElementById("fight");
 var magic = document.getElementById("magic");
 
-var bouton_attack_joueur = document.getElementById("bouton_attack");
-var bouton_poison_joueur = document.getElementById("bouton_poison");
+var bouton_attack = document.getElementById("bouton_attack");
+var bouton_magic = document.getElementById("bouton_magic");
+var bouton_defense = document.getElementById("bouton_defense");
 
 
 
@@ -32,9 +34,6 @@ var vie_joueur3 = document.getElementById("j3h");
 var mana_joueur3 = document.getElementById("j3m");
 var attack_joueur3 = document.getElementById("j3a");
 var defense_joueur3 = document.getElementById("j3d");
-
-
-
 
 //stat Hass joueur4
 var last_move_joueur4 = "rien";
@@ -71,6 +70,8 @@ var monstre3 = document.getElementById("m3");
 //Fonction----------------------------------------------
 function switch_perso ()
 {
+  bouton_magic.innerHTML = "???";
+
   if (vie_monstre1.innerHTML <= 0 && vie_monstre2.innerHTML <= 0 && vie_monstre3.innerHTML <= 0)
   {
     alert("vous avez gagnez pour recommencer recharger la page");
@@ -82,6 +83,7 @@ function switch_perso ()
     alert("vous avez perdu pour recommencer recharger la page");
     joueur =6;
   }
+
 
   joueur = joueur + 1;
 
@@ -111,17 +113,46 @@ function switch_perso ()
     monsters_attack();
   }
 
-
 }
-
-
 
 
 
 function action_fight()
 {
-  bouton_attack_joueur.onclick = function(){attack();}
+  bouton_attack.onclick = function(){attack();}
+
+  bouton_defense.onclick = function(){defense();}
 }
+
+
+
+function defense()
+{
+  if (joueur==1 && last_move_joueur1 != "defense")
+  {
+    last_move_joueur1 = "defense";
+  }
+
+  if (joueur==2 && last_move_joueur2 != "defense")
+  {
+    last_move_joueur2 = "defense";
+  }
+
+  if (joueur==3 && last_move_joueur3 != "defense")
+  {
+    last_move_joueur3 = "defense";
+  }
+
+  if (joueur==4 && last_move_joueur4 != "defense")
+  {
+    last_move_joueur4 = "defense";
+  }
+
+
+  switch_perso();
+
+}
+
 
 
 function attack()
@@ -135,7 +166,7 @@ function attack()
       monstre3.onclick = function(){cible_attack(vie_monstre3,attack_joueur1,monstre3);}
     }
 
-    if (joueur==2)
+    if (joueur==2 && last_move_joueur2 != "attack")
     {
       last_move_joueur2 = "attack"
       monstre1.onclick = function(){cible_attack(vie_monstre1,attack_joueur2,monstre1);}
@@ -143,15 +174,15 @@ function attack()
       monstre3.onclick = function(){cible_attack(vie_monstre3,attack_joueur2,monstre3);}
     }
 
-    if (joueur==3)
+    if (joueur==3 && last_move_joueur3 != "attack")
     {
-      last_move_joueur2 = "attack"
+      last_move_joueur3 = "attack"
       monstre1.onclick = function(){cible_attack(vie_monstre1,attack_joueur3,monstre1);}
       monstre2.onclick = function(){cible_attack(vie_monstre2,attack_joueur3,monstre2);}
       monstre3.onclick = function(){cible_attack(vie_monstre3,attack_joueur3,monstre3);}
     }
 
-    if (joueur==4)
+    if (joueur==4 && last_move_joueur4 != "attack")
     {
       last_move_joueur4 = "attack"
       monstre1.onclick = function(){cible_attack(vie_monstre1,attack_joueur4,monstre1);}
@@ -159,7 +190,7 @@ function attack()
       monstre3.onclick = function(){cible_attack(vie_monstre3,attack_joueur4,monstre3);}
     }
 
-    bouton_attack_joueur.onclick = false;
+    bouton_attack.onclick = false;
 }
 
 
@@ -181,32 +212,158 @@ function cible_attack(vie,attack,monstre)
 
 
 
-
-
-
-
-
 function action_magic()
 {
-  bouton_poison_joueur.onclick = function(){poison();}
+
+  if(joueur == 1 && last_move_joueur1 != "magic" )
+  {
+    last_move_joueur1 = "magic"
+
+    if (mana_joueur1.innerHTML > 25)
+    {
+      bouton_magic.innerHTML = "Fire = 25 mana";
+      bouton_magic.onclick = function(){fire();}
+    }
+  }
+
+  if(joueur == 2 && last_move_joueur2 != "magic" )
+  {
+    last_move_joueur2 = "magic"
+
+    if (mana_joueur2.innerHTML > 26)
+    {
+      bouton_magic.innerHTML = "Wind = 26 mana";
+      bouton_magic.onclick = function(){wind();}
+    }
+  }
+
+  if(joueur == 3 && last_move_joueur3 != "magic" )
+  {
+    last_move_joueur3 = "magic"
+
+    if (mana_joueur3.innerHTML > 35)
+    {
+      bouton_magic.innerHTML = "Poison = 35 mana";
+      bouton_magic.onclick = function(){poison();}
+    }
+  }
+
+  if(joueur == 4 && last_move_joueur4 != "magic")
+  {
+    last_move_joueur4 = "magic"
+
+    if (mana_joueur4.innerHTML > 40)
+    {
+      bouton_magic.innerHTML = "Soin = 40 mana";
+      bouton_magic.onclick = function(){soin();}
+    }
+  }
+
+}
+
+
+function fire()
+{
+
+  monstre1.onclick = function(){cible_fire(vie_monstre1,monstre1);}
+  monstre2.onclick = function(){cible_fire(vie_monstre2,monstre2);}
+  monstre3.onclick = function(){cible_fire(vie_monstre3,monstre3);}
+
+  bouton_magic.onclick = false;
+
+}
+
+
+function cible_fire(vie,monstre)
+{
+  mana_joueur1.innerHTML = mana_joueur1.innerHTML - 25;
+  vie.innerHTML = vie.innerHTML - 50;
+
+  if (vie.innerHTML <= 0)
+  {
+    monstre.style.visibility="hidden";
+  }
+
+  monstre1.onclick = false ;
+  monstre2.onclick = false ;
+  monstre3.onclick = false ;
+
+  switch_perso();
+}
+
+
+function wind()
+{
+
+  monstre1.onclick = function(){cible_wind(vie_monstre1,monstre1);}
+  monstre2.onclick = function(){cible_wind(vie_monstre2,monstre2);}
+  monstre3.onclick = function(){cible_wind(vie_monstre3,monstre3);}
+
+  bouton_magic.onclick = false;
+
+}
+
+
+function cible_wind(vie,monstre)
+{
+  mana_joueur2.innerHTML = mana_joueur2.innerHTML - 26;
+  vie.innerHTML = vie.innerHTML - 50;
+
+  if (vie.innerHTML <= 0)
+  {
+    monstre.style.visibility="hidden";
+  }
+
+  monstre1.onclick = false ;
+  monstre2.onclick = false ;
+  monstre3.onclick = false ;
+
+  switch_perso();
 }
 
 
 function poison()
 {
-    if (joueur==1 || joueur==2 || joueur==3 || joueur==4)
-    {
-      monstre1.onclick = function(){cible_poison(vie_monstre1,monstre1);}
-      monstre2.onclick = function(){cible_poison(vie_monstre2,monstre2);}
-      monstre3.onclick = function(){cible_poison(vie_monstre3,monstre3);}
 
-      bouton_poison_joueur.onclick = false;
-    }
+  monstre1.onclick = function(){cible_poison(vie_monstre1,monstre1);}
+  monstre2.onclick = function(){cible_poison(vie_monstre2,monstre2);}
+  monstre3.onclick = function(){cible_poison(vie_monstre3,monstre3);}
+
 }
 
 
 function cible_poison(vie,monstre)
 {
+  mana_joueur3.innerHTML = mana_joueur3.innerHTML - 35;
+  vie.innerHTML = vie.innerHTML - 50;
+
+  if (vie.innerHTML <= 0)
+  {
+    monstre.style.visibility="hidden";
+  }
+
+  monstre1.onclick = false ;
+  monstre2.onclick = false ;
+  monstre3.onclick = false ;
+
+  switch_perso();
+}
+
+
+function soin()
+{
+  monstre1.onclick = function(){cible_soin(vie_monstre1,monstre1);}
+  monstre2.onclick = function(){cible_soin(vie_monstre2,monstre2);}
+  monstre3.onclick = function(){cible_soin(vie_monstre3,monstre3);}
+
+  bouton_magic.onclick = false;
+
+}
+
+
+function cible_soin(vie,monstre)
+{
+  mana_joueur4.innerHTML = mana_joueur4.innerHTML - 40;
   vie.innerHTML = vie.innerHTML - 50;
 
   if (vie.innerHTML <= 0)
@@ -228,9 +385,9 @@ function cible_poison(vie,monstre)
 
 
 
-
 function monsters_attack ()
 {
+
   // monstre 1 attack
   while (valid_attack_monstre1 == 0 && vie_monstre1.innerHTML > 0 )
   {
@@ -254,10 +411,9 @@ function monsters_attack ()
     valid_attack_monstre3 = cible_monsters_attack (attack_monstre3,valid_attack_monstre3);
   }
 
+
   valid_attack_monstre1 = 0;
-
   valid_attack_monstre2 = 0;
-
   valid_attack_monstre3 = 0;
 
   switch_perso();
@@ -267,27 +423,40 @@ function monsters_attack ()
 
 function cible_monsters_attack (attack_monstre,valid_attack_monstre)
 {
+
   if(random == 1 && vie_joueur1.innerHTML > 0)
   {
-    vie_joueur1.innerHTML = vie_joueur1.innerHTML - (attack_monstre.innerHTML - defense_joueur1.innerHTML);
+    if(last_move_joueur1 != "defense")
+    {
+      vie_joueur1.innerHTML = vie_joueur1.innerHTML - (attack_monstre.innerHTML - defense_joueur1.innerHTML);
+    }
     valid_attack_monstre = 1;
   }
 
   if(random == 2 && vie_joueur2.innerHTML > 0)
   {
-    vie_joueur2.innerHTML = vie_joueur2.innerHTML - (attack_monstre.innerHTML - defense_joueur2.innerHTML);
+    if(last_move_joueur2 != "defense")
+    {
+      vie_joueur2.innerHTML = vie_joueur2.innerHTML - (attack_monstre.innerHTML - defense_joueur2.innerHTML);
+    }
     valid_attack_monstre = 1;
   }
 
   if(random == 3 && vie_joueur3.innerHTML > 0)
   {
-    vie_joueur3.innerHTML = vie_joueur3.innerHTML - (attack_monstre.innerHTML - defense_joueur3.innerHTML);
+    if(last_move_joueur3 != "defense")
+    {
+      vie_joueur3.innerHTML = vie_joueur3.innerHTML - (attack_monstre.innerHTML - defense_joueur3.innerHTML);
+    }
     valid_attack_monstre = 1;
   }
 
   if(random == 4 && vie_joueur4.innerHTML > 0)
   {
-    vie_joueur4.innerHTML = vie_joueur4.innerHTML - (attack_monstre.innerHTML - defense_joueur4.innerHTML);
+    if(last_move_joueur4 != "defense")
+    {
+      vie_joueur4.innerHTML = vie_joueur4.innerHTML - (attack_monstre.innerHTML - defense_joueur4.innerHTML);
+    }
     valid_attack_monstre = 1;
   }
 
@@ -330,6 +499,7 @@ function mort_perso ()
   }
 
 }
+
 //Code--------------------------------------------------
 
 fight.onclick = function(){action_fight();}
