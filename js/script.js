@@ -198,7 +198,7 @@ function action_fight()
   monstre1.onclick = false ;
   monstre2.onclick = false ;
   monstre3.onclick = false ;
-  
+
   help.innerHTML = "Attack = Attack your ennemy with your actual character attack stat. <br> Defend = Monsters will not deal damage to your actual character.";
   bouton_magic.style.color = "white";
   bouton_magic.innerHTML = "???";
@@ -240,6 +240,7 @@ function defense()
   }
 
   bouton_defense.onclick = false;
+  bouton_attack.onclick = false;
   switch_perso();
 
 }
@@ -283,6 +284,7 @@ function attack()
   }
 
   bouton_attack.onclick = false;
+  bouton_defense.onclick = false;
 }
 
 
@@ -341,7 +343,7 @@ function action_magic()
 
     if (mana_joueur2.innerHTML >= 50)
     {
-      bouton_magic.innerHTML = "Wind = 50 mana";
+
       bouton_magic.onclick = function(){wind();}
     }
     else
@@ -423,12 +425,12 @@ function cible_kirin(vie,monstre)
 
 function wind()
 {
+  bouton_magic.innerHTML = "Wind = 50 mana";
 
   monstre1.onclick = function(){cible_wind(vie_monstre1,monstre1);}
   monstre2.onclick = function(){cible_wind(vie_monstre2,monstre2);}
   monstre3.onclick = function(){cible_wind(vie_monstre3,monstre3);}
 
-  bouton_magic.onclick = false;
   magic.onclick = false;
   magic.onclick = function(){action_magic();}
 
