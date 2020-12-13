@@ -195,9 +195,13 @@ function color_perso()
 
 function action_fight()
 {
+  monstre1.onclick = false ;
+  monstre2.onclick = false ;
+  monstre3.onclick = false ;
+  
   help.innerHTML = "Attack = Attack your ennemy with your actual character attack stat. <br> Defend = Monsters will not deal damage to your actual character.";
   bouton_magic.style.color = "white";
-
+  bouton_magic.innerHTML = "???";
 
   bouton_attack.style.color = "Red";
   bouton_attack.onclick = function(){attack();}
@@ -205,7 +209,8 @@ function action_fight()
   bouton_defense.style.color = "grey";
   bouton_defense.onclick = function(){defense();}
 
-
+  fight.onclick = false;
+  fight.onclick = function(){action_fight();}
 }
 
 
@@ -302,19 +307,26 @@ function cible_attack(vie,attack,monstre)
 
 
 
+
+
+
 function action_magic()
 {
+  monstre1.onclick = false ;
+  monstre2.onclick = false ;
+  monstre3.onclick = false ;
+
+  bouton_magic.innerHTML = "???";
+  bouton_magic.style.color = "white";
   bouton_attack.style.color = "white";
   bouton_defense.style.color = "white";
-  help.innerHTML = "All your characters got a different magic spell. <br> Click on your character name to see his magic spell decription.";
+  help.innerHTML = "All your characters got a different magic spell. <br> If you have enought mana you can click on ??? to see the magic spell decription.";
 
   if(joueur == 1 && last_move_joueur1 != "magic" )
   {
     last_move_joueur1 = "magic"
     if (mana_joueur1.innerHTML >= 100)
     {
-      bouton_magic.innerHTML = "Kirin";
-      bouton_magic.style.color = "aqua";
       bouton_magic.onclick = function(){kirin();}
     }
     else
@@ -376,6 +388,8 @@ function action_magic()
 function kirin()
 {
   help.innerHTML = "You need 100 mana to activate this magic spell. <br> Kirin = You deal 100 damage.";
+  bouton_magic.innerHTML = "Kirin";
+  bouton_magic.style.color = "aqua";
 
   monstre1.onclick = function(){cible_kirin(vie_monstre1,monstre1);}
   monstre2.onclick = function(){cible_kirin(vie_monstre2,monstre2);}
