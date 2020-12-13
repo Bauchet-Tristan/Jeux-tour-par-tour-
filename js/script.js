@@ -23,13 +23,14 @@ var cible34 = parseInt(0);
 var retenu_vie12 = parseInt(0);
 var retenu_vie34 = parseInt(0);
 
+
 //stat Koh joueur1
 var name_joueur1 = document.getElementById("name_koh");
 var last_move_joueur1 = "rien";
 
 var vie_joueur1_no_int = document.getElementById("j1h");
 var vie_joueur1 = parseInt(vie_joueur1_no_int.innerHTML);
-var vie_joueur1_max = vie_joueur1;
+var vie_joueur1_max = 150;
 
 var mana_joueur1 = document.getElementById("j1m");
 var attack_joueur1 = document.getElementById("j1a");
@@ -42,7 +43,7 @@ var last_move_joueur2 = "rien";
 
 var vie_joueur2_no_int = document.getElementById("j2h");
 var vie_joueur2 = parseInt(vie_joueur2_no_int.innerHTML);
-var vie_joueur2_max = parseInt(vie_joueur2.innerHTML);
+var vie_joueur2_max = 150;
 
 var mana_joueur2 = document.getElementById("j2m");
 var attack_joueur2 = document.getElementById("j2a");
@@ -55,7 +56,7 @@ var last_move_joueur3 = "rien";
 
 var vie_joueur3_no_int = document.getElementById("j3h");
 var vie_joueur3 = parseInt(vie_joueur3_no_int.innerHTML);
-var vie_joueur3_max = parseInt(vie_joueur3.innerHTML);
+var vie_joueur3_max = 150;
 
 var mana_joueur3 = document.getElementById("j3m");
 var attack_joueur3 = document.getElementById("j3a");
@@ -68,7 +69,7 @@ var last_move_joueur4 = "rien";
 
 var vie_joueur4_no_int = document.getElementById("j4h");
 var vie_joueur4 = parseInt(vie_joueur4_no_int.innerHTML);
-var vie_joueur4_max = parseInt(vie_joueur4.innerHTML);
+var vie_joueur4_max = 150;
 
 var mana_joueur4 = document.getElementById("j4m");
 var attack_joueur4 = document.getElementById("j4a");
@@ -523,46 +524,46 @@ function heal()
   //Effet heal
   if (cible == parseInt(1))
   {
-    alert("Cham heal 1");
-    vie_joueur1 = vie_joueur1 - (-50);
+    alert("Cham heal Koh");
+    vie_joueur1_no_int.innerHTML = vie_joueur1_no_int.innerHTML - (-50);
 
-    if (vie_joueur1 > vie_joueur1_max)
+    if (vie_joueur1_no_int.innerHTML > vie_joueur1_max)
     {
-      vie_joueur1 = vie_joueur1_max;
+      vie_joueur1_no_int.innerHTML = vie_joueur1_max;
     }
   }
 
 
   if (cible == parseInt(2))
   {
-    alert("Cham heal 2");
-    vie_joueur2 = vie_joueur2 - (-50);
+    alert("Cham heal Koh");
+    vie_joueur2_no_int.innerHTML = vie_joueur2_no_int.innerHTML - (-50);
 
-    if (vie_joueur2 > vie_joueur2_max)
+    if (vie_joueur2_no_int.innerHTML > vie_joueur2_max)
     {
-      vie_joueur2 = vie_joueur2_max;
+      vie_joueur2_no_int.innerHTML = vie_joueur2_max;
     }
   }
 
   if (cible == parseInt(3))
   {
-    alert("Cham heal 3");
-    vie_joueur3 = vie_joueur3 - (-50);
+    alert("Cham heal Koh");
+    vie_joueur3_no_int.innerHTML = vie_joueur3_no_int.innerHTML - (-50);
 
-    if (vie_joueur3 > vie_joueur3_max)
+    if (vie_joueur3_no_int.innerHTML > vie_joueur3_max)
     {
-      vie_joueur3 = vie_joueur3_max;
+      vie_joueur3_no_int.innerHTML = vie_joueur3_max;
     }
   }
 
   if (cible == parseInt(4))
   {
-    alert("Cham heal 4");
-    vie_joueur4 = vie_joueur4 - (-50);
+    alert("Cham heal Koh");
+    vie_joueur4_no_int.innerHTML = vie_joueur4_no_int.innerHTML - (-50);
 
-    if (vie_joueur4 > vie_joueur4_max)
+    if (vie_joueur4_no_int.innerHTML > vie_joueur4_max)
     {
-      vie_joueur4 = vie_joueur4_max;
+      vie_joueur4_no_int.innerHTML = vie_joueur4_max;
     }
   }
 
@@ -575,6 +576,10 @@ function heal()
 
 function cible_heal()
 {
+  vie_joueur1 = parseInt(vie_joueur1_no_int.innerHTML);
+  vie_joueur2 = parseInt(vie_joueur2_no_int.innerHTML);
+  vie_joueur3 = parseInt(vie_joueur3_no_int.innerHTML);
+  vie_joueur4 = parseInt(vie_joueur4_no_int.innerHTML);
 
   if(vie_joueur1 <= vie_joueur2)
   {
@@ -659,7 +664,7 @@ function cible_monsters_attack (attack_monstre,valid_attack_monstre)
   {
     if(last_move_joueur1 != "defense")
     {
-      alert("attack joueur1")
+      alert("attack Koh")
       vie_joueur1_no_int.innerHTML = vie_joueur1_no_int.innerHTML - (attack_monstre.innerHTML - defense_joueur1.innerHTML);
     }
     valid_attack_monstre = 1;
@@ -669,7 +674,7 @@ function cible_monsters_attack (attack_monstre,valid_attack_monstre)
   {
     if(last_move_joueur2 != "defense")
     {
-      alert("attack joueur2");
+      alert("attack Hass");
       vie_joueur2_no_int.innerHTML = vie_joueur2_no_int.innerHTML - (attack_monstre.innerHTML - defense_joueur2.innerHTML);
     }
     valid_attack_monstre = 1;
@@ -679,7 +684,7 @@ function cible_monsters_attack (attack_monstre,valid_attack_monstre)
   {
     if(last_move_joueur3 != "defense")
     {
-      alert("attack joueur3");
+      alert("attack Muri");
       vie_joueur3_no_int.innerHTML = vie_joueur3_no_int.innerHTML - (attack_monstre.innerHTML - defense_joueur3.innerHTML);
     }
     valid_attack_monstre = 1;
@@ -689,7 +694,7 @@ function cible_monsters_attack (attack_monstre,valid_attack_monstre)
   {
     if(last_move_joueur4 != "defense")
     {
-      alert("attack joueur4");
+      alert("attack Cham");
       vie_joueur4_no_int.innerHTML = vie_joueur4_no_int.innerHTML - (attack_monstre.innerHTML - defense_joueur4.innerHTML);
     }
     valid_attack_monstre = 1;
@@ -716,21 +721,25 @@ function mort_perso ()
 
   if (vie_joueur1_no_int.innerHTML<= 0)
   {
+    alert("Koh est mort");
     vie_joueur1_no_int.innerHTML = 0;
   }
 
   if (vie_joueur2_no_int.innerHTML<= 0)
   {
+    alert("Hass est mort");
     vie_joueur2_no_int.innerHTML = 0;
   }
 
   if (vie_joueur3_no_int.innerHTML<= 0)
   {
+    alert("Muri est mort");
     vie_joueur3_no_int.innerHTML = 0;
   }
 
   if (vie_joueur4_no_int.innerHTML<= 0)
   {
+    alert("Cham est mort");
     vie_joueur4_no_int.innerHTML = 0;
   }
 
